@@ -1,0 +1,55 @@
+Composition vs Inheritance: 
+
+Inheritance:   is a relationship
+
+class A{
+  a=100;
+}
+class C{
+ a=200;
+}
+class B extends A,C{ // not possible
+}
+
+
+Composition: has-a relationship
+
+class A{
+
+}
+class B{
+}
+class C{
+      var x= new A();
+      var y= new B();
+}
+
+
+
+A,B,C,D,E,F 
+
+
+function A(){
+
+return(
+    <div>
+             
+    </div>
+)
+
+}
+
+
+Components : 
+
+App, VideoList, VideoPlayer, SearchBar 
+
+
+                                           App (fetch videos based on search term)
+
+    SearchBar (maintain search term)   VideoPlayer(play video)   VideoList (show list of videos) 
+
+
+AIzaSyD_CY47dJMfzlROPUDs6hxZRSBwX2Jz4X0   ->  
+
+
