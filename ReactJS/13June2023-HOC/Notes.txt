@@ -1,0 +1,72 @@
+
+Create the following 3 Components 
+
+1. Products -> Make API Call and get the products and display on the UI. 
+
+https://fakestoreapi.com/products
+
+2. Users -> Make API Call and get the users and display on the UI. 
+
+https://jsonplaceholder.typicode.com/users
+
+3. Posts -> Make API Call and get the posts and display them on the UI. 
+
+https://jsonplaceholder.typicode.com/POSTS
+
+Create a HOC that will have a generic function that makes an API Call. 
+
+
+
+Steps: 
+
+1. Create Users Component 
+
+2. Create Posts Component 
+
+3. Create Products Component 
+
+4. Create HOC 
+
+
+   function HOC = (Component, url) => {
+     
+       const MYHOC = () => {
+
+            const [data, setData] = useState([]);
+
+             const makeAPICall = () => {
+                  axios.get(url).then(
+                      (response) =>{
+                             setData(response.data);
+                      }
+                  )
+             }
+
+             return(
+                 <Component data={data} makeAPICall={makeAPICall}>
+             )
+
+       }
+
+   }
+
+   export HOC; 
+
+
+   Products.js :
+
+
+    const Products = (props) =>{
+
+         return (
+             <>
+              <button onClick={props.makeAPICall}>Fetch Products</button>
+
+              {props.data.length}
+             </>
+         )
+
+    }
+
+     HOC(Products, "https://fakestoreapi.com/products")
+
