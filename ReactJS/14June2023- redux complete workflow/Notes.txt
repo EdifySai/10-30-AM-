@@ -1,0 +1,31 @@
+Redux:
+
+
+Redux is a js library used for application state management.
+
+The main purpose of React is to display the UI content in a lightning speed, But React is also taking 
+care of data management,due to which the user experience could be affected. To Segregate the data layer from 
+presentation layer we can use redux. 
+
+
+React - presentation Layer - Displaying the data on the UI.
+
+Redux - Data Layer - Managing the application data (state).
+
+
+Redux Workflow:
+
+Store : It maintains the global state of the application.
+
+Root Reducer : Responsible to gather all the reducers and put them under one object and send it to 
+Store.
+
+In Other words, Root reducer builds the application state
+
+Reducer : is used filter / maintain the data of a specific functionality and pass it on to Root Reducer
+
+Action : generates the data by making API Calls.
+
+Container: It is the react componant that interacts with redux
+
+Container ->  Action -> Reducer -> Root Reducer -> Store 
