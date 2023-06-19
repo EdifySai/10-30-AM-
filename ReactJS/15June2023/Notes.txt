@@ -1,0 +1,5 @@
+
+Implement the redux application , maintain the users data into store 
+and access from other container. 
+
+
