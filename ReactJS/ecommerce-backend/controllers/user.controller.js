@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
         }
         else {
 
-            Email.sendEmail(user.email);
+            // Email.sendEmail(user.email);
 
             res.status(201).send({
                 statusCode: 201,
