@@ -73,4 +73,3 @@ const Register = (props) => {
     );
 };
 export default APIHOC(Register, null);
-
