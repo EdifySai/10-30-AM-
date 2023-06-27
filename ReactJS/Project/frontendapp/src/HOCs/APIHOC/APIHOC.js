@@ -4,7 +4,14 @@ const APIHOC = (Component, data) => {
         const postRequest = (apiURL, requestBody) => {
             return axios.post(apiURL, requestBody);
         }
-        return <Component postRequest={postRequest} />
+        const getRequest = (apiURL) => {
+            return axios.get(apiURL);
+        }
+
+        const deleteRequest = (apiURL) => {
+            return axios.delete(apiURL);
+        }
+        return <Component postRequest={postRequest} getRequest={getRequest} deleteRequest={deleteRequest} />
     }
     return HOCFn;
 }

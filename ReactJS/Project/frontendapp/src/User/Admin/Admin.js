@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { API } from '../../utils/constants';
 import APIHOC from '../../HOCs/APIHOC/APIHOC';
 
@@ -11,7 +11,36 @@ function Admin(props) {
         imageURL: ''
     });
 
-
+    const renderlist = () => {
+        var list = products.map(product => {
+            return <tr>
+                <td>{product.productId}</td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td><img src={product.imageURL} style={{ width: '100px', height: '100px' }}></img></td>
+                <td><button onClick={(product) => {
+                    editProduct(product);
+                }} className="btn btn-warning">Edit</button></td>
+                <td><button onClick={() => {
+                    deleteProduct(product.productId);
+                }} className="btn btn-danger">Delete</button></td>
+            </tr>
+        })
+        return list;
+    }
+    const editProduct = (product) => {
+        alert("edit product called");
+    }
+    const deleteProduct = (id) => {
+        console.log("product", id);
+        props.deleteRequest(API.deleteProduct + "/" + id).then(
+            response => {
+                console.log("response", response);
+                getProductsList();
+            }
+        )
+    }
+    const [products, setProducts] = useState([]);
     const updateState = (event) => {
         var name = event.target.name;
         var value = event.target.value;
@@ -19,7 +48,21 @@ function Admin(props) {
     }
     const formRef = useRef();
     const alertRef = useRef();
+    useEffect(() => {
+        getProductsList();
+    }, [])
 
+    const getProductsList = () => {
+        props.getRequest(API.listProducts).then(
+            response => {
+                console.log("response", response.data);
+                setProducts(response.data);
+            },
+            error => {
+                console.log("error", error);
+            }
+        )
+    }
     const addProduct = (event) => {
         event.preventDefault();
         console.log("product", product);
@@ -28,6 +71,7 @@ function Admin(props) {
                 console.log("response", response);
                 formRef.current.reset();
                 alertRef.current.style.display = "block";
+                getProductsList();
             },
             error => {
                 console.log("error", error);
@@ -70,6 +114,27 @@ function Admin(props) {
                     </div>
                 </form>
             </div >
+
+            <br></br><br></br>
+            <hr></hr>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th colSpan="2">Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {renderlist()}
+
+                </tbody>
+            </table>
+
         </>
     )
 }

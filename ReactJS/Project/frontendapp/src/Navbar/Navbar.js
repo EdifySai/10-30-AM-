@@ -2,6 +2,7 @@ import { Link, BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from '../User/Login/Login';
 import Register from '../User/Register/Register';
 import Admin from '../User/Admin/Admin';
+import Home from '../User/Home/Home';
 function Navbar() {
     return (
         <>
@@ -32,6 +33,7 @@ function Navbar() {
                     </div>
                 </nav>
                 <Routes>
+                    <Route path="/" element={<Home></Home>} />
                     <Route path="/login" element={<Login></Login>} />
                     <Route path="/register" element={<Register></Register>} />
                     <Route path="/admin" element={<Admin></Admin>} />
