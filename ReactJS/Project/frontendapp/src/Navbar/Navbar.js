@@ -3,6 +3,8 @@ import Login from '../User/Login/Login';
 import Register from '../User/Register/Register';
 import Admin from '../User/Admin/Admin';
 import Home from '../User/Home/Home';
+import ProductView from '../User/ProductView/ProductView';
+import Dashboard from '../User/Dashboard/Dashboard';
 function Navbar() {
     return (
         <>
@@ -37,6 +39,8 @@ function Navbar() {
                     <Route path="/login" element={<Login></Login>} />
                     <Route path="/register" element={<Register></Register>} />
                     <Route path="/admin" element={<Admin></Admin>} />
+                    <Route path="/product-view" element={<ProductView></ProductView>} />
+                    <Route path="/dashboard" element={<Dashboard></Dashboard>} />
                 </Routes>
             </BrowserRouter>
         </>

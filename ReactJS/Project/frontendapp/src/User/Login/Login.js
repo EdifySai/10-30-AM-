@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { API } from '../../utils/constants';
 import APIHOC from '../../HOCs/APIHOC/APIHOC';
-
+import { useNavigate } from 'react-router';
 const Login = (props) => {
+    const navigate = useNavigate();
     const alertRef = useRef();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -24,6 +25,10 @@ const Login = (props) => {
         props.postRequest(API.login, body).then(
             response => {
                 console.log("response", response);
+                if (response.data.statusCode == 200) {
+                    localStorage.setItem("isUserLoggedIn", true);
+                    navigate("/dashboard");
+                }
                 // formRef.current.reset();
                 // alertRef.current.style.display = "block";
             },
@@ -36,7 +41,6 @@ const Login = (props) => {
     };
     return (
         <div className="container mt-3">
-
             <div ref={alertRef} style={{ display: "none" }} class="alert alert-danger alert-dismissible">
                 <strong>Login Failed!</strong> Please try again
         </div>
@@ -60,5 +64,3 @@ const Login = (props) => {
 };
 const LoginHOC = APIHOC(Login, null);
 export default LoginHOC;
-
-

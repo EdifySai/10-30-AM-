@@ -13,8 +13,8 @@ app.use(express.json());
 app.use('/user', UserRouter);
 app.use('/product', ProductRouter);
 const razorpayInstance = new Razorpay({
-    key_id: "rzp_test_yNwTLapO6BFmov",
-    key_secret: "Sj1MHQWiQlg4ruiBKXSorX82"
+    key_id: "rzp_test_hVXZWHikHZjVZC",
+    key_secret: "ZMMHP0Yvsee0Z4cGmvu4p26u"
 });
 app.post('/createOrder', (req, res) => {
     // STEP 1:
@@ -36,9 +36,7 @@ app.post('/createOrder', (req, res) => {
 app.listen(process.env.PORT_NO, () => {
     console.log("The server running on PORT", process.env.PORT_NO)
 });
-
 /*
-
 {
     "id": "order_LrQjRiw2sNfKDN",
     "entity": "order",
@@ -53,5 +51,4 @@ app.listen(process.env.PORT_NO, () => {
     "notes": [],
     "created_at": 1684479386
 }
-
 */
